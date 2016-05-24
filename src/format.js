@@ -185,6 +185,16 @@ angular.module('angularPayments')
       return;
     }
 
+    if (e.keyCode == 9) {
+      // HUY: fixes firefox not tabbing at 4 digits
+      return
+    }
+
+    if (_hasTextSelected($target)) {
+      // HUY: fixes tabbing -> text selected -> not being able to replace values
+      return;
+    }
+
     val = $target.val() + digit;
 
     if(val.length <= 4){
